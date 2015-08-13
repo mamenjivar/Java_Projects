@@ -16,13 +16,16 @@ public class guess_number{
 		number1 = randomNumbers.nextInt(10) + 1; //random number range from 1-10
 		
 		while (number != number1){ //keeps looping until correct answer is reached
-			if (number < 0 || number > 10){
+			if (number < 0 || number > 10){ //checks if number is outside of 1-10 range
 				System.out.print("Pick a number between 1 and 10: ");
 				number = keyboard.nextInt();
-			} else{
-				System.out.print("wrong number, please try again: ");
+			} else if (number1 < number){ //checks value of number if higher than guessed number
+				System.out.print("Hint: go lower ");
 				number = keyboard.nextInt();
-			}
+			} else if (number1 > number){ //checks value of number if lower than guess number
+				System.out.print("Hint: go higher ");
+				number = keyboard.nextInt();
+			}		
 		}
 		System.out.println("You guessed the correct number!");
 	}
