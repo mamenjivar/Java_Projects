@@ -14,10 +14,15 @@ public class guess_number{
 		number = keyboard.nextInt();
 
 		number1 = randomNumbers.nextInt(10) + 1; //random number range from 1-10
-	
+		
 		while (number != number1){ //keeps looping until correct answer is reached
-			System.out.print("wrong number, please try again: ");
-			number = keyboard.nextInt();
+			if (number < 0 || number > 10){
+				System.out.print("Pick a number between 1 and 10: ");
+				number = keyboard.nextInt();
+			} else{
+				System.out.print("wrong number, please try again: ");
+				number = keyboard.nextInt();
+			}
 		}
 		System.out.println("You guessed the correct number!");
 	}
