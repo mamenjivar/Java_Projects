@@ -1,4 +1,4 @@
-//guessing game with hints
+//guessing game with hints and counter
 
 import java.util.Scanner; 
 import java.util.Random;
