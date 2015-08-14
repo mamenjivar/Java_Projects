@@ -8,13 +8,21 @@ public class pallindrome{
 
 		Scanner keyboard = new Scanner(System.in);
 		String pallindrome;
-		String reverse;
+		String copy;
 
 		System.out.print("Please enter a pallindrome: ");
 		pallindrome = keyboard.nextLine();
 
-		char[] charArray = pallindrome.toCharArray();
-		reverse = Collections.reverse(charArray);
-		System.out.println(reverse);
+		StringBuilder a = new StringBuilder(pallindrome);
+		System.out.println(a);
+		System.out.println(a.reverse());
+		//String b = a.reverse();
+		//String c = b.toString();
+
+		if(a == a.reverse()) {
+			System.out.println("It is a pallindrome: ");
+		} else{
+			System.out.println("it is not a pallindrome: ");
+		}
 	}
 }
