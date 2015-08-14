@@ -11,7 +11,7 @@ public class guess_number{
 
 		int number; //variable for keyboard input
 		int rand_num; //variable for random number
-		int tracker = 1;
+		int counter = 1; //tracks number of tries
 
 		System.out.print("Please enter a number from 1 through 10: ");
 		number = keyboard.nextInt();
@@ -22,18 +22,18 @@ public class guess_number{
 			if (number < 0 || number > 10){ //checks if number is outside of 1-10 range
 				System.out.print("Pick a number between 1 and 10: ");
 				number = keyboard.nextInt();
-				tracker++;
+				counter++;
 			} else if (rand_num < number){ //checks value of number if higher than guessed number
 				System.out.print("Hint: go lower ");
 				number = keyboard.nextInt();
-				tracker++;
+				counter++;
 			} else if (rand_num > number){ //checks value of number if lower than guess number
 				System.out.print("Hint: go higher ");
 				number = keyboard.nextInt();
-				tracker++;
+				counter++;
 			}		
 		}
 		System.out.println("You guessed the correct number!");
-		System.out.println("It took you " + tracker + " tries!");
+		System.out.println("It took you " + counter + " tries!");
 	}
 }
