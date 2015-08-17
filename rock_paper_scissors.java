@@ -11,7 +11,7 @@ public class rock_paper_scissors{
 
 		int roshambo;
 		int rand_num;
-		String choice;
+		String input;
 		char repeat;
 
 		System.out.println("Welcome to the game of rock, paper, and scissors!");
@@ -19,6 +19,7 @@ public class rock_paper_scissors{
 			System.out.println("1 = rock, 2 = paper, 3 = scissors");
 			System.out.print("Please refer to the menu above: ");
 			roshambo = keyboard.nextInt();
+			keyboard.nextLine();
 
 			rand_num = randomNumbers.nextInt(3) + 1;
 			/*user choices*/
@@ -35,9 +36,9 @@ public class rock_paper_scissors{
 				default:
 					System.out.print("choose rock, paper, or scissors");
 			}
-			System.out.println("Would you like to try again? ");
-			choice = keyboard.nextLine();
-			repeat = choice.charAt(0);
+			System.out.print("Would you like to try again? ");
+			input = keyboard.nextLine();
+			repeat = input.charAt(0);
 		} while (repeat == 'Y' || repeat == 'y');
 	} /*computer choices*/
 		public static void rock(int num){
@@ -45,13 +46,12 @@ public class rock_paper_scissors{
 			switch (num) {
 			case 1: //rock
 				System.out.println("It is a draw");
-
 				break;
 			case 2: //paper
 				System.out.println("You lost!");
 				break;
 			case 3: //scissors
-				System.out.println("You Won!");
+				System.out.println("You Win!");
 				break;
 			default:
 				System.out.print("choose rock, paper, or scissors");
@@ -80,7 +80,7 @@ public class rock_paper_scissors{
 					System.out.println("You Lost!");
 					break;
 				case 2: //paper
-					System.out.println("You Won!");
+					System.out.println("You Win!");
 					break;
 				case 3: //scissors
 					System.out.println("It is a Draw");
