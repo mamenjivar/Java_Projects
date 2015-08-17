@@ -13,6 +13,8 @@ public class rock_paper_scissors{
 		int rand_num;
 		String input;
 		char repeat;
+		int win = 0;
+		int loss = 0;
 
 		System.out.println("Welcome to the game of rock, paper, and scissors!");
 		do {
@@ -26,12 +28,27 @@ public class rock_paper_scissors{
 			switch (roshambo) {
 				case 1: //rock
 					rock(rand_num);
+					if (rand_num == 2){
+						loss++;
+					} else if (rand_num == 3) {
+						win++;
+					}
 					break;
 				case 2: //paper
 					paper(rand_num);
+					if (rand_num == 3){
+						loss++;
+					} else if (rand_num == 1) {
+						win++;
+					}
 					break;
 				case 3://scissors
 					scissors(rand_num);
+					if (rand_num == 1){
+						loss++;
+					} else if (rand_num == 2) {
+						win++;
+					}
 					break;
 				default:
 					System.out.print("choose rock, paper, or scissors");
@@ -40,9 +57,11 @@ public class rock_paper_scissors{
 			input = keyboard.nextLine();
 			repeat = input.charAt(0);
 		} while (repeat == 'Y' || repeat == 'y');
-	} /*computer choices*/
+
+		System.out.println("Final Score: You " + win + " Computer " + loss);
+	} 	/*computer choices*/
+		/*user outcome for rock*/
 		public static void rock(int num){
-			/*user outcome for rock*/
 			switch (num) {
 			case 1: //rock
 				System.out.println("It is a draw");
@@ -57,8 +76,8 @@ public class rock_paper_scissors{
 				System.out.print("choose rock, paper, or scissors");
 			}
 		}
+		/*user outcome for paper*/
 		public static void paper(int num){
-			/*user outcome for paper*/
 			switch (num) {
 				case 1: // rock
 					System.out.println("You Win!");
@@ -73,8 +92,8 @@ public class rock_paper_scissors{
 					System.out.print("choose rock, paper, or scissors");
 			}
 		}
+		/*user outcome for scissors*/
 		public static void scissors(int num){
-			/*user outcome for scissors*/
 			switch (num) {
 				case 1: //rock
 					System.out.println("You Lost!");
