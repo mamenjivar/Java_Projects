@@ -1,10 +1,11 @@
 //grade checker for point based systems
 
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class point_gradechecker{
 	public static void main(String[] args) {
-		 
+
 		Scanner keyboard = new Scanner(System.in);
 		/*variables for points earned in assignment*/
 		double score_earned;
@@ -17,6 +18,8 @@ public class point_gradechecker{
 		/*variables to ask user if wanting to input more scores*/
 		char repeat;
 		String input;
+
+		DecimalFormat formatter = new DecimalFormat("#.00");
 
 		do {
 			//asks user to input scores
@@ -40,11 +43,10 @@ public class point_gradechecker{
 		 	/*calculates the current grade together*/
 		 	grade_score = score_earned1 / overal_score1 * 100;
 
-
 		} while (repeat == 'Y' || repeat == 'y');
 		//shows results onto the terminal screen
 		System.out.println("total points earned from points assignment: " + score_earned1);
 		System.out.println("overal points from all assignments: " + overal_score1);
-		System.out.println("Overall grade: " + grade_score);
+		System.out.println("Overall grade: " + formatter.format(grade_score));
 	}
 }
