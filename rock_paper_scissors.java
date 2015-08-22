@@ -70,11 +70,12 @@ public class rock_paper_scissors{
 			repeat = input.charAt(0);
 		} while (repeat == 'Y' || repeat == 'y');
 
-		System.out.println("Final Score =  You: " + win + " Draws: " + draw + " Computer: " + loss); //after program quits, user is prompted with final score
-	} 	/*computer choices*/
+		//after program quits, user is prompted with final score
+		System.out.println("Final Score =  You: " + win + " Draws: " + draw + " Computer: " + loss); 
+	} 	
+		/*computer choices*/
 		/*user outcome for rock*/
 		public static void rock(int num){
-
 			switch (num) {
 			case 1: //rock
 				System.out.println("Computer chose rock");
