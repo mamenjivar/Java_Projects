@@ -11,7 +11,7 @@ public class rock_paper_scissors{
 
 		int roshambo; //user input
 		int rand_num; //computer input
-		String input; 
+		String input;
 		char repeat;
 		/*counters for win and loss*/
 		int win = 0;
@@ -71,8 +71,8 @@ public class rock_paper_scissors{
 		} while (repeat == 'Y' || repeat == 'y');
 
 		//after program quits, user is prompted with final score
-		System.out.println("Final Score =  You: " + win + " Draws: " + draw + " Computer: " + loss); 
-	} 	
+		System.out.println("Final Score =  You: " + win + " Draws: " + draw + " Computer: " + loss);
+	}
 		/*computer choices*/
 		/*user outcome for rock*/
 		public static void rock(int num){
@@ -131,4 +131,4 @@ public class rock_paper_scissors{
 					System.out.print("choose rock, paper, or scissors");
 			}
 		}
-}
+	}
