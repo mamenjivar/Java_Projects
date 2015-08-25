@@ -68,6 +68,7 @@ public class rock_paper_scissors{
 			System.out.print("Would you like to try again? ");
 			input = keyboard.nextLine();
 			repeat = input.charAt(0);
+			System.out.println();
 		} while (repeat == 'Y' || repeat == 'y');
 
 		//after program quits, user is prompted with final score
