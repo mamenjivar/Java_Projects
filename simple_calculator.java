@@ -51,7 +51,10 @@ public class simple_calculator{
 			//division
 			case 4:
 				answer = first_value / second_value;
-				System.out.println(first_value + " / " + second_value + " = " + answer);
+				System.out.println(first_value + " \u00F7 " + second_value + " = " + answer);
+				break;
+			default:
+				System.out.println("error");
 		}
 	}
 }
