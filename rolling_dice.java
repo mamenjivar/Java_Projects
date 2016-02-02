@@ -13,11 +13,18 @@ public class rolling_dice {
     int dice1;
     int dice2;
     int answer;
+    int roll;
 
     /*loop variables*/
     String result;
     char first_letter;
 
+    /*System.out.print("Would like to roll one or two dice?: ");
+    roll = keyboard.nextLine();
+
+    if else statement with void main classes
+
+    if (roll =)*/
     do{
       /*gives dice 1 & 2 a random value from 1-6*/
       dice1 = random_numbers.nextInt(6) + 1;
@@ -38,4 +45,7 @@ public class rolling_dice {
 
     } while (first_letter == 'Y' || first_letter == 'y');
   }
+  /*public static void one_roll(){
+
+  }*/
 }
