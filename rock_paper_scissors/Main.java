@@ -1,14 +1,8 @@
 /**
- * Miguel Menjivar
- * 
- * Rock, Paper, Scissors
- */
-package roshambo;
-
-/**
- * @author Miguel
+ * @author Miguel Menjivar
  *
- * Main class that begins the program
+ * Rock, Paper, and Scissors game
+ * with score tracker
  */
 public class Main
 {
