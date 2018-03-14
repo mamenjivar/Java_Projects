@@ -1,13 +1,8 @@
 /**
- * Miguel Menjivar
- * 
- * Rock, Paper, Scissors
- */
-package roshambo;
-
-/**
- * @author Miguel
+ * @author Miguel Menjivar
  *
+ * Rock, Paper, Scissors
+ * 
  * this class will keep track of the score for each game played of rock paper
  * scissors
  */
