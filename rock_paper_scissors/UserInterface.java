@@ -1,15 +1,8 @@
-/**
- * Miguel Menjivar
- * 
- * Rock, Paper, Scissors
- */
-package roshambo;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * @author Miguel
+ * @author Miguel Menjivar
  *
  * This class will be be in charge of printing all the information onto the
  * terminal for the user to see
