@@ -1,16 +1,12 @@
-/**
- * Miguel Menjivar
- * 
- * Rock, Paper, Scissors
- */
-package roshambo;
-
 import java.util.Random;
 
 /**
- * @author Miguel
+ * @author Miguel Menjivar
  *
- * This class will be in charge of all the
+ * Rock, Paper, and Scissors game
+ *
+ * This class will be in charge of all the  possible scenarios
+ * for each choice 
  */
 public class GameEngine
 {
