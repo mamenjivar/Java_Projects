@@ -11,7 +11,6 @@
  * 
  * Game Engine: this class will handle the game logic
  */
-package targetPractice;
 
 import java.util.Random;
 
