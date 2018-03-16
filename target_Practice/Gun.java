@@ -11,7 +11,6 @@
  * 
  * Gun: will hold all the gun attributes
  */
-package targetPractice;
 
 public class Gun {
 	/**
