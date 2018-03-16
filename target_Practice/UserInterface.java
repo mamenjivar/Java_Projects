@@ -11,7 +11,6 @@
  * 
  * User Interface: prints statements to terminal
  */
-package targetPractice;
 
 import java.util.Scanner;
 
