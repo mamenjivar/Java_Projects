@@ -11,7 +11,6 @@
  * 
  * Main: Runs the program
  */
-package targetPractice;
 
 public class Main {
 	public static void main(String[] args){
