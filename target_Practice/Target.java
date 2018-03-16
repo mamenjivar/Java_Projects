@@ -11,7 +11,6 @@
  * 
  * Target class: has attributes of the target whether hit or miss
  */
-package targetPractice;
 
 public class Target {
 	private static final int TARGET_NUMBERS = 5;
