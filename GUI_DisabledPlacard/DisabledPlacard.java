@@ -7,6 +7,8 @@
  * This GUI based project is to track all Disabled Placards
  * that come to campus. 
  */
+package db;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -16,6 +18,7 @@ import javax.swing.border.TitledBorder;
 
 public class DisabledPlacard {
 
+	// frame
 	private JFrame frame;
 
 	// menu bar and items
@@ -34,14 +37,16 @@ public class DisabledPlacard {
 	private JLabel searchNamePlacardLabel;
 	private JLabel searchNumberPlacardLabel;
 	private JLabel dialogLabel;
-	private JLabel information;
+	private JLabel githubLink;
 	private JLabel placardSaved;
+	private JLabel information;
 
 	// buttons
 	private JButton addPlacardButton;
 	private JButton searchNamePlacardButton;
 	private JButton searchNumberPlacardButton;
 	private JButton dialogButton;
+	private JButton cancelButton;
 
 	// text fields
 	private JTextField addNamePlacardText;
@@ -50,17 +55,23 @@ public class DisabledPlacard {
 	private JTextField searchNamePlacardText;
 	private JTextField searchNumberPlacardText;
 
+	// placards that were found
 	private JTextArea dataFound;
+//	private JTextArea information;
 
 	// panels
 	private JPanel addPlacardPanel;
 	private JPanel searchPlacardPanel;
+//	private JPanel infoPanel;
 
 	// dialogs
 	private JDialog aboutDialog;
 	private JDialog helpDialog;
 	private JDialog saveDialog;
 	private JDialog searchDialog;
+	
+	// inside of help dialog box
+	private JScrollPane jscrlp;
 
 	// for searching text file
 	private Scanner scan;
@@ -68,15 +79,20 @@ public class DisabledPlacard {
 	// name of file
 	private String fileName = "disabledPlacard.txt";
 
-	// add breaks to match the length of the dialog box
+	// help section instructions on how to use this program
 	private String helpSection = "<html><p>Add New Placard:<br>"
-			+ "In the boxes provided you will input the name, placard number, and notes and it will be saved<br>"
+			+ "In the boxes provided you will input the name,<br> placard number, and notes and it will be saved<br><br>"
 			+ "Search a Placard: <br>"
-			+ "With any information provided, you may search placards by name or by permit number.</html></p>";
+			+ "With any information provided,<br> you may search placards by name or by permit number."
+			+ "<br><br>Storing placards:<br>"
+			+ "The placards are to be stored inside a file<br> named disabledPlacard.txt"
+			+ "<br><br>Source Code:<br>"
+			+ "The source code will be located on Github. The link is provided<br> under the about page and more information<br>"
+			+ "will be provided on the site</html></p>";
 
 	// tracks the amount of occurrences each time search comes true
 	private int searchCounter;
-	
+
 	/**
 	 * Create the application.
 	 */
@@ -156,12 +172,14 @@ public class DisabledPlacard {
 		// about dialog block
 		aboutDialog = new JDialog();
 		aboutDialog.setTitle("About");
-		aboutDialog.setSize(200, 100);
+		aboutDialog.setSize(300, 125);
 		aboutDialog.setLayout(new FlowLayout());
 		aboutDialog.setLocationRelativeTo(null);
 		dialogLabel = new JLabel("Miguel Menjivar (C) 2018");
+		githubLink = new JLabel("github.com/mamenjivar/DPTracker_CPP_PTS");
 		dialogButton = new JButton("Close");
 		aboutDialog.add(dialogLabel);
+		aboutDialog.add(githubLink);
 		aboutDialog.add(dialogButton);
 
 		// opens about dialog box
@@ -192,49 +210,69 @@ public class DisabledPlacard {
 		saveDialog.setSize(200, 100);
 		saveDialog.setLayout(new FlowLayout());
 		saveDialog.setLocationRelativeTo(null);
-		placardSaved = new JLabel("The placard has been saved!");
+		placardSaved = new JLabel();
+		cancelButton = new JButton("Cancel");
 		saveDialog.add(placardSaved);
-		saveDialog.add(dialogButton);
+		saveDialog.add(cancelButton);
 
 		// when save button is pressed
 		addPlacardButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+				if (addNamePlacardText.getText().equals("") || addNumberPlacardText.getText().equals("")
+						|| addNotePlacardText.getText().equals("")) {
+					placardSaved.setText("Please fill in all boxes please");
+					saveDialog.setVisible(true);
+				} else {
+					try {
+						PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
+						writer.print(addNamePlacardText.getText());
+						writer.print(" ");
+						writer.print(addNumberPlacardText.getText());
+						writer.print(" ");
+						writer.print(addNotePlacardText.getText());
+						writer.println();
+						writer.close();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 
-				try {
-					PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
-					writer.print(addNamePlacardText.getText());
-					writer.print(" ");
-					writer.print(addNumberPlacardText.getText());
-					writer.print(" ");
-					writer.print(addNotePlacardText.getText());
-					writer.println();
-					writer.close();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+					placardSaved.setText("The placard has been saved!");
+					// opens dialog box to confirm saving placard information
+					saveDialog.setVisible(true);
+
+					// sets all text fields empty for user to write a new permit
+					addNamePlacardText.setText(null);
+					addNumberPlacardText.setText(null);
+					addNotePlacardText.setText(null);
 				}
-				
-				// opens dialog box to confirm saving placard information
-				saveDialog.setVisible(true);
+			}
+		});
 
-				// sets all text fields empty for user to write a new permit
-				addNamePlacardText.setText(null);
-				addNumberPlacardText.setText(null);
-				addNotePlacardText.setText(null);
+		// closes saved placard box
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				saveDialog.setVisible(false);
 			}
 		});
 
 		// help instruction block
 		helpDialog = new JDialog();
+		helpDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		helpDialog.setTitle("Help");
-		helpDialog.setSize(200, 200);
+		helpDialog.setSize(375, 300);
 		helpDialog.setLayout(new FlowLayout());
 		helpDialog.setLocationRelativeTo(null);
+//		infoPanel = new JPanel();
+		
 		information = new JLabel(helpSection);
-		helpDialog.add(information);
+		jscrlp = new JScrollPane();
+		jscrlp.setViewportView(information);
+		
+		helpDialog.add(jscrlp);
 
 		// displays help instructions menu
 		helpInstructions.addActionListener(new ActionListener() {
@@ -246,7 +284,7 @@ public class DisabledPlacard {
 		// search box that displays found users
 		searchDialog = new JDialog();
 		searchDialog.setTitle("Search a Placard");
-		searchDialog.setSize(250, 200);
+		searchDialog.setSize(300, 200);
 		searchDialog.setLayout(new FlowLayout());
 		searchDialog.setLocationRelativeTo(null);
 		dataFound = new JTextArea();
@@ -260,11 +298,11 @@ public class DisabledPlacard {
 				searchCounter = 1;
 				try {
 					scan = new Scanner(new File(fileName));
-					
+
 					// add number of occurrences
 					while (scan.hasNext()) {
 						String line = scan.nextLine().toLowerCase().toString();
-						if (line.contains(searchNamePlacardText.getText())){
+						if (line.contains(searchNamePlacardText.getText())) {
 							dataFound.append(searchCounter + ") " + line);
 							dataFound.append("\n");
 							searchCounter++;
@@ -286,11 +324,11 @@ public class DisabledPlacard {
 				searchCounter = 1;
 				try {
 					scan = new Scanner(new File(fileName));
-					
+
 					// add number of occurrences
 					while (scan.hasNext()) {
 						String line = scan.nextLine().toLowerCase().toString();
-						if (line.contains(searchNumberPlacardText.getText())){
+						if (line.contains(searchNumberPlacardText.getText())) {
 							dataFound.append(searchCounter + ") " + line);
 							dataFound.append("\n");
 							searchCounter++;
